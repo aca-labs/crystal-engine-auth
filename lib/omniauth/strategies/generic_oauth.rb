@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# encoding: UTF-8
 
 require 'multi_json'
 require 'jwt'
@@ -64,6 +64,9 @@ module OmniAuth
 
         options.client_id = strat.client_id
         options.client_secret = strat.client_secret
+
+        # prevent csrf errors
+        options.provider_ignores_state = true
       end
 
       def access_token_options
